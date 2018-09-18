@@ -8,6 +8,21 @@ public class Book {
 	int price;
 	int publisherId;
 	boolean available;
+	String publisherTitle;
+	String categoryName;
+	
+	public String getPublisherTitle() {
+		return publisherTitle;
+	}
+	public void setPublisherTitle(String publisherTitle) {
+		this.publisherTitle = publisherTitle;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	public int getId() {
 		return id;
 	}

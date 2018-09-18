@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <c:url var="R" value="/" />
 <!DOCTYPE html>
 <html>
 <head>
-
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
         rel="stylesheet" media="screen">
@@ -16,10 +16,17 @@
 <body>
 <div class="container">
   <h1>책목록</h1>
-  <div class="pull-right mb5">
-  <a href="create" class="btn btn-info">
-    <span class="glyphicon glyphicon-user"></span>책등록</a>
-  </div>    
+  
+  <form method="post" class="form-inline mp5">
+
+ 	<input name="title" value="${title}" class="form-control w200"/>
+  	<button type="submit" class="btn btn-primary">조회</button>
+  	</form>
+  	
+  	<a href="list" class ="btn btn-default">검색취소</a>
+  	
+  	<a href="create" class="btn btn-info pull-right">
+   			<span class="glyphicon glyphicon-user"></span>책등록</a>
   <table class="table table-bordered mt5">
     <thead>
       <tr>
@@ -27,6 +34,7 @@
         <th>제목</th>
         <th>저자</th>
         <th>카테고리</th>
+        <th>출판사</th>
         <th>가격</th>
         <th>대여가능</th>
       </tr>
@@ -37,6 +45,8 @@
           <td>${ book.id }</td>
           <td>${ book.title }</td>
           <td>${ book.author }</td>
+          <td>${ book.categoryName }</td>
+          <td>${ book.publisherTitle }</td>
           <td>${ book.price }</td>
           <td>${ book.available }</td>
         </tr>

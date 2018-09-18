@@ -1,4 +1,4 @@
-package net.shku.controller;
+package net.skhu.controller;
 
 import java.util.List;
 
@@ -26,13 +26,19 @@ public class BookController {
 
     @RequestMapping("list")
     public String list(Model model) {
-    	System.out.println("시발");
         List<Book> books = bookMapper.findAll();
-        List<Category> categories = categoryMapper.findAll();
-        model.addAttribute("categories", categories);
         model.addAttribute("books", books);
         return "book/list";
     }
+    
+    @RequestMapping(value="list", method=RequestMethod.POST)
+    public String list(Model model, @RequestParam("title") String title) {
+    	System.out.println(title);
+    	List<Book> books = bookMapper.findByTitle(title);
+    	model.addAttribute("books",books);
+    	return "book/list";
+    }
+    
     @RequestMapping(value="create", method=RequestMethod.GET)
     public String create(Model model) {
         Book book= new Book();
@@ -73,5 +79,6 @@ public class BookController {
         return "redirect:list";
     }
 }
+
 
 
