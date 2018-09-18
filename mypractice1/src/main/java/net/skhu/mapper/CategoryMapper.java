@@ -9,6 +9,7 @@ import net.skhu.dto.Category;
 @Mapper
 public interface CategoryMapper {
     Category findOne(int id);
+    Category findOneByName(String categoryName);
     List<Category> findAll();
 }
 

@@ -17,17 +17,16 @@
   <select id="findByTitle" resultType="Book">
   	SELECT b.*, c.categoryName, p.title as publisherTitle
     FROM book b LEFT JOIN category c ON b.categoryId = c.id LEFT JOIN publisher p ON b.publisherId = p.id
-    WHERE b.title LIKE #{title}
+    WHERE b.title LIKE #{input}
     ORDER BY b.id;
   </select>
   
   <select id="findByCategory" resultType="Book">
   	SELECT b.*, c.categoryName, p.title as publisherTitle
     FROM book b LEFT JOIN category c ON b.categoryId = c.id LEFT JOIN publisher p ON b.publisherId = p.id
-    WHERE c.categoryName LIKE #{categoryName}
+    WHERE b.categoryId LIKE #{categoryId}
     ORDER BY b.id;
   </select>
-  
   
  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
     INSERT Book (title, author, categoryId, price, publisherId, available)

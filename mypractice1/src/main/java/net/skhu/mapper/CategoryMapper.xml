@@ -8,6 +8,10 @@
     SELECT * FROM category WHERE id = #{id}
   </select>
   
+  <select id="findOneByName" resultType="Category">
+    SELECT * FROM category WHERE categoryName LIKE #{categoryName}
+  </select>
+  
   <select id="findAll" resultType="Category">
     SELECT *
     FROM category

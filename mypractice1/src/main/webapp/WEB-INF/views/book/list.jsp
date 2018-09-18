@@ -14,19 +14,27 @@
   <link rel="stylesheet" href="${R}res/common.css">
 </head>
 <body>
+<%
+String select=request.getParameter("select");
+if(select==null) select="0";
+%>
 <div class="container">
   <h1>책목록</h1>
-  
   <form method="post" class="form-inline mp5">
-
- 	<input name="title" value="${title}" class="form-control w200"/>
+  	<select name="select" class="form-control w100">
+  		<option value="0" <%= "0".equals(select) ? "selected" : "" %>>전체</option>
+  		<option value="1" <%= "1".equals(select) ? "selected" : "" %>>제목</option>
+  		<option value="2" <%= "2".equals(select) ? "selected" : "" %>>카테고리</option>
+  	</select>
+ 	<input name="input" value="${input}" class="form-control w200"/>
   	<button type="submit" class="btn btn-primary">조회</button>
-  	</form>
+  	
   	
   	<a href="list" class ="btn btn-default">검색취소</a>
   	
   	<a href="create" class="btn btn-info pull-right">
    			<span class="glyphicon glyphicon-user"></span>책등록</a>
+  </form>			
   <table class="table table-bordered mt5">
     <thead>
       <tr>

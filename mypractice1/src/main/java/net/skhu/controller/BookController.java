@@ -32,9 +32,14 @@ public class BookController {
     }
     
     @RequestMapping(value="list", method=RequestMethod.POST)
-    public String list(Model model, @RequestParam("title") String title) {
-    	System.out.println(title);
-    	List<Book> books = bookMapper.findByTitle(title);
+    public String list(Model model, @RequestParam("select") String select, @RequestParam("input") String input) {
+    	List<Book> books = null;
+    	if(select.equals("0")) books = bookMapper.findAll();
+    	else if(select.equals("1")) books = bookMapper.findByTitle(input+"%");
+    	else {
+    		int categoryId = categoryMapper.findOneByName(input+"%").getId();
+    		books =bookMapper.findByCategory(categoryId);
+    	}
     	model.addAttribute("books",books);
     	return "book/list";
     }

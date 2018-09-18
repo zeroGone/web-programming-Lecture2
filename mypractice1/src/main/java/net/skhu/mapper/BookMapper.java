@@ -10,7 +10,8 @@ import net.skhu.dto.Book;
 public interface BookMapper {
     Book findOne(int id);
     List<Book> findAll();
-    List<Book> findByTitle(String title);
+    List<Book> findByTitle(String input);
+    List<Book> findByCategory(int categoryId);
     void insert(Book book);
     void update(Book book);
     void delete(int id);
