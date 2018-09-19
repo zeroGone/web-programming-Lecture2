@@ -26,10 +26,8 @@ if(select==null) select="0";
   		<option value="1" <%= "1".equals(select) ? "selected" : "" %>>제목</option>
   		<option value="2" <%= "2".equals(select) ? "selected" : "" %>>카테고리</option>
   	</select>
- 	<input name="input" value="${input}" class="form-control w200"/>
+ 	<input name="input" class="form-control w200"/>
   	<button type="submit" class="btn btn-primary">조회</button>
-  	
-  	
   	<a href="list" class ="btn btn-default">검색취소</a>
   	
   	<a href="create" class="btn btn-info pull-right">

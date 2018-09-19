@@ -37,7 +37,8 @@ public class BookController {
     	if(select.equals("0")) books = bookMapper.findAll();
     	else if(select.equals("1")) books = bookMapper.findByTitle(input+"%");
     	else {
-    		int categoryId = categoryMapper.findOneByName(input+"%").getId();
+    		Category category = categoryMapper.findOneByName(input+"%");
+    		int categoryId = category==null?0:category.getId();
     		books =bookMapper.findByCategory(categoryId);
     	}
     	model.addAttribute("books",books);
