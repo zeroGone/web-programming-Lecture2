@@ -9,6 +9,7 @@ import net.skhu.dto.Publisher;
 @Mapper
 public interface PublisherMapper {
     Publisher findOne(int id);
+    Publisher findOneByTitle(String title);
     List<Publisher> findAll();
 }
 

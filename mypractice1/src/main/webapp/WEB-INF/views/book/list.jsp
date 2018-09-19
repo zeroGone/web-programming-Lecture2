@@ -25,6 +25,8 @@ if(select==null) select="0";
   		<option value="0" <%= "0".equals(select) ? "selected" : "" %>>전체</option>
   		<option value="1" <%= "1".equals(select) ? "selected" : "" %>>제목</option>
   		<option value="2" <%= "2".equals(select) ? "selected" : "" %>>카테고리</option>
+  		<option value="3" <%= "3".equals(select) ? "selected" : "" %>>출판사</option>
+  		<option value="4" <%= "4".equals(select) ? "selected" : "" %>>저자</option>
   	</select>
  	<input name="input" class="form-control w200"/>
   	<button type="submit" class="btn btn-primary">조회</button>
@@ -54,7 +56,7 @@ if(select==null) select="0";
           <td>${ book.categoryName }</td>
           <td>${ book.publisherTitle }</td>
           <td>${ book.price }</td>
-          <td>${ book.available }</td>
+          <td>${ book.available==true? "O":"X"}</td>
         </tr>
       </c:forEach>
     </tbody>

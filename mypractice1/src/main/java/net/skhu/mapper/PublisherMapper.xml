@@ -8,6 +8,10 @@
     SELECT * FROM publisher WHERE id = #{id}
   </select>
   
+   <select id="findOneByTitle" resultType="Publisher">
+    SELECT * FROM publisher WHERE id&lt;=8 and title LIKE #{title}
+  </select>
+  
   <select id="findAll" resultType="Publisher">
     SELECT *
     FROM publisher

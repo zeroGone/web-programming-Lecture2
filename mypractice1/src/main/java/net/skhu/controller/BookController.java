@@ -34,13 +34,17 @@ public class BookController {
     @RequestMapping(value="list", method=RequestMethod.POST)
     public String list(Model model, @RequestParam("select") String select, @RequestParam("input") String input) {
     	List<Book> books = null;
-    	if(select.equals("0")) books = bookMapper.findAll();
+    	if(select.equals("0")||input=="") books = bookMapper.findAll();
     	else if(select.equals("1")) books = bookMapper.findByTitle(input+"%");
-    	else {
+    	else if(select.equals("2")){
     		Category category = categoryMapper.findOneByName(input+"%");
     		int categoryId = category==null?0:category.getId();
     		books =bookMapper.findByCategory(categoryId);
-    	}
+    	}else if(select.equals("3")){
+    		Publisher publisher = publisherMapper.findOneByTitle(input+"%");
+    		int publisherId = publisher==null?0:publisher.getId();
+    		books = bookMapper.findByPublisher(publisherId);
+    	}else books=bookMapper.findByAuthor(input+"%");
     	model.addAttribute("books",books);
     	return "book/list";
     }
@@ -76,7 +80,7 @@ public class BookController {
     @RequestMapping(value="edit", method=RequestMethod.POST)
     public String edit(Model model, Book book) {
         bookMapper.update(book);
-        return "redirect:list";
+        return "redirect:edit?id=67";
     }
 
     @RequestMapping("delete")

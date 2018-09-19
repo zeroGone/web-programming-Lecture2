@@ -12,6 +12,8 @@ public interface BookMapper {
     List<Book> findAll();
     List<Book> findByTitle(String input);
     List<Book> findByCategory(int categoryId);
+    List<Book> findByPublisher(int publisherId);
+    List<Book> findByAuthor(String input);
     void insert(Book book);
     void update(Book book);
     void delete(int id);

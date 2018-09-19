@@ -8,6 +8,13 @@
     SELECT * FROM book WHERE id = #{id}
   </select>
   
+  <select id="findByAuthor" resultType="Book">
+    SELECT b.*, c.categoryName, p.title as publisherTitle
+    FROM book b LEFT JOIN category c ON b.categoryId = c.id LEFT JOIN publisher p ON b.publisherId = p.id
+    WHERE b.author LIKE #{input}
+    ORDER BY b.id;
+  </select>
+  
   <select id="findAll" resultType="Book">
     SELECT b.*, c.categoryName, p.title as publisherTitle
     FROM book b LEFT JOIN category c ON b.categoryId = c.id LEFT JOIN publisher p ON b.publisherId = p.id
@@ -28,18 +35,25 @@
     ORDER BY b.id;
   </select>
   
+  <select id="findByPublisher" resultType="Book">
+  	SELECT b.*, c.categoryName, p.title as publisherTitle
+    FROM book b LEFT JOIN category c ON b.categoryId = c.id LEFT JOIN publisher p ON b.publisherId = p.id
+    WHERE b.publisherId LIKE #{publisherId}
+    ORDER BY b.id;
+  </select>
+  
  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
     INSERT Book (title, author, categoryId, price, publisherId, available)
     VALUES (#{title}, #{author}, #{categoryId}, #{price}, #{publisherId}, #{available})
   </insert>
 
   <update id="update">
-    UPDATE Student SET 
+    UPDATE Book SET 
       title = #{title}, 
       author = #{author}, 
       categoryId = #{categoryId}, 
-      price = #{price}
-      publisherId = #{publisherId} 
+      price = #{price},
+      publisherId = #{publisherId}
     WHERE id = #{id}
   </update>
 
