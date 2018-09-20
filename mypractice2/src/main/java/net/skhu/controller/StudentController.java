@@ -33,12 +33,12 @@ public class StudentController {
     
     
     @RequestMapping(value="list", method=RequestMethod.POST)
-    public String list(Model model, @RequestParam("select") String select, @RequestParam("input") String input) {
-    	List<Student> students = select.equals("0")?studentMapper.findByName(input+"%"):studentMapper.findByDepartmentAndName(Integer.parseInt(select),input+"%");
+    public String list(Model model, @RequestParam("select") int select, @RequestParam("input") String input) {
+    	List<Student> students = select==0?studentMapper.findByName(input+"%"):studentMapper.findByDepartmentAndName(select,input+"%");
     	model.addAttribute("students", students);
     	List<Department> departments = departmentMapper.findAll();
     	model.addAttribute("departments", departments);
-    	model.addAttribute("select",Integer.parseInt(select));
+    	model.addAttribute("select",select);
         return "student/list";
     }
 }
