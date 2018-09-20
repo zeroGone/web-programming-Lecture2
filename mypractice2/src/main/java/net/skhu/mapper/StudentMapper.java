@@ -11,6 +11,7 @@ import net.skhu.dto.Student;
 @Mapper
 public interface StudentMapper {
     List<Student> findAll();
+    List<Student> findByName(String input);
     List<Student> findByDepartmentAndName(@Param("select") int select, @Param("input") String input);
 }
 

@@ -7,6 +7,12 @@
   <select id="findAll" resultType="Student">
     SELECT s.*, d.departmentName
     FROM Student s LEFT JOIN department d ON s.departmentId = d.id
+  </select> 
+  
+  <select id="findByName" resultType="Student">
+  	SELECT s.*, d.departmentName
+    FROM Student s LEFT JOIN department d ON s.departmentId = d.id
+    WHERE s.name LIKE #{input}
   </select>
   
   <select id="findByDepartmentAndName" resultType="Student">

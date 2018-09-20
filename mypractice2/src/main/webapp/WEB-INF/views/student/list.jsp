@@ -16,17 +16,19 @@
 <body>
 <div class="container">
   <h1>학생목록</h1>
-  <form method="post" class="form-inline mb5">
+  <form method="post" class="form-inline mb5">  
   	<select name="select" class = "form-control w100" >
-  		<option label="전체" value="0"/>
+  		<option label="전체" value="0" />
   		<c:forEach var="department" items="${departments}">
-  			<option label="${department.departmentName}" value="${department.id}"/>
+  			<option label="${department.departmentName}" value="${department.id}" ${department.id==select?"selected":""}/>
   		</c:forEach>
   	</select>
+  	
   	<input name="input" class = "form-control w200"/>
   	<button type="submit" class="btn btn-primary">조회</button>
   	<a href="list" class ="btn btn-default">검색취소</a>
   </form>
+  
   <table class="table table-bordered mt5">
     <thead>
       <tr>
