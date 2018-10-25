@@ -3,6 +3,7 @@
              "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="net.skhu.mapper.StudentMapper">
+  <cache flushInterval="10000" />
 
   <select id="findOne" resultType="Student">
     SELECT * FROM Student WHERE id = #{id}
@@ -13,7 +14,7 @@
   </select>   
 
   <select id="findAll" resultType="Student">
-    SELECT s.*, d.departmentName
+    SELECT s.*, d.departmentName, NOW() time
     FROM Student s LEFT JOIN department d ON s.departmentId = d.id
   </select>
  
