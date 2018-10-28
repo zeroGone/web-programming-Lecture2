@@ -46,4 +46,10 @@ public class MybatisController {
         return "mybatis/departmentList";
     }
 
+    @RequestMapping("departmentList2")
+    public String departmentList2(Model model) {
+        model.addAttribute("departments", departmentMapper.findAllWithStudents());
+        return "mybatis/departmentList";
+    }
+
 }
