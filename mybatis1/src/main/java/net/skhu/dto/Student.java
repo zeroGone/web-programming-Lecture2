@@ -6,14 +6,22 @@ import java.util.Date;
 public class Student implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    Department department;
     int id;
+	String name;
     String studentNumber;
-    String name;
-    int departmentId;
     int year;
-    String departmentName;
+    int departmentId;
     Date time;
 
+    public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	
     public int getId() {
         return id;
     }
@@ -54,13 +62,6 @@ public class Student implements Serializable {
         this.year = year;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
 
     public Date getTime() {
         return time;

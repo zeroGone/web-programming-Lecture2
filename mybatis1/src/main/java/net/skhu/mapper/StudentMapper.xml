@@ -17,7 +17,24 @@
     SELECT * FROM Student WHERE departmentId = #{departmentId}
   </select>   
   
+  <select id="findAllWithDepartment" resultMap="resultMap1">
+    SELECT s.*, d.id departmentId, d.departmentName departmentName, NOW() time
+    FROM Student s LEFT JOIN Department d ON d.id = s.departmentId
+  </select>
 
+  <resultMap id="resultMap1" type="Student">
+    <id property="id" column="id" />
+    <result property="studentNumber" column="studentNumber"/>
+    <result property="name" column="name"/>
+    <result property="year" column="year"/>
+    <result property="departmentId" column="departmentId"/>
+    <result property="time" column="time"/>
+    <association property="department" javaType="Department">
+      <id property="id" column="departmentId" />
+      <result property="departmentName" column="departmentName" />
+    </association>
+  </resultMap>
+  
   <select id="findAll" resultType="Student">
     SELECT s.*, d.departmentName, NOW() time
     FROM Student s LEFT JOIN department d ON s.departmentId = d.id

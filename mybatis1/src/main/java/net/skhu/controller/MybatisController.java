@@ -25,7 +25,7 @@ public class MybatisController {
         List<Department> departments = departmentMapper.findAll();
         model.addAttribute("departments", departments);
         model.addAttribute("department", departments.get(0));
-        model.addAttribute("students", studentMapper.findAll().subList(0, 5));
+        model.addAttribute("students", studentMapper.findAllWithDepartment().subList(0, 5));
         return "mybatis/cacheTest";
     }
 

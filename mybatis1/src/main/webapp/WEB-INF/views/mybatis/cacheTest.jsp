@@ -46,7 +46,7 @@
           <td>${ student.id }</td>
           <td>${ student.studentNumber }</td>
           <td>${ student.name }</td>
-          <td>${ student.departmentName }</td>
+          <td>${ student.department.departmentName }</td>
           <td><fmt:formatDate pattern="HH:mm:ss" value="${ student.time }" /></td>
         </tr>
       </c:forEach>

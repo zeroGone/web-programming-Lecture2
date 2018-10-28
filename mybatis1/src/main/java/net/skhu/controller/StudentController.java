@@ -23,7 +23,7 @@ public class StudentController {
 
     @RequestMapping("list")
     public String list(Model model) {
-        List<Student> students = studentMapper.findAll();
+        List<Student> students = studentMapper.findAllWithDepartment();
         model.addAttribute("students", students);
         return "student/list";
     }
