@@ -32,11 +32,13 @@
 				<option value="4" ${ orderIndex.equals("4")?"selected":"" }>가격순</option>
 				<option value="5" ${ orderIndex.equals("5")?"selected":"" }>출판사순</option>
 			</select>
+			<label>제목검색</label>
+			<input name="input" class="form-control w200"/>
 			<button type="submit" class="btn btn-primary">조회</button>
 			<a href="list" class="btn btn-info"> <span
-				class="glyphicon glyphicon-user"></span>새로고침
+				class="glyphicon"></span>새로고침
 			</a> <a href="create" class="btn btn-info pull-right mb5"> <span
-				class="glyphicon glyphicon-user"></span> 책등록
+				class="glyphicon glyphicon-book"></span> 책등록
 			</a>
 		</form>
 		<table class="table table-bordered mt5">

@@ -11,6 +11,7 @@ import net.skhu.dto.Book;
 public interface BookMapper {
 	List<Book> findAllWithPublisherAndCategory();
 	List<Book> findAllOrderBy(@Param("order") String order);
+	List<Book> findByTitleAndOrderBy(@Param("book") Book book, @Param("order") String order);
 	Book findOne(int id);
 	
     void insert(Book book);

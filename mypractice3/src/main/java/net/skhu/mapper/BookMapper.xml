@@ -12,6 +12,18 @@
 	order by ${order};
   </select>
   
+  <select id = "findByTitleAndOrderBy" resultMap = "resultMap1">
+  	select b.*, c.categoryName, p.title publisherTitle, NOW() time
+	from book b left join category c on b.categoryId = c.id 
+	left join publisher p on b.publisherId = p.id
+	<where>
+		<if test="book.title!=null">
+			AND b.title like #{book.title}
+		</if>
+	</where>
+	order by ${order};
+  </select>
+  
   <select id = "findAllWithPublisherAndCategory" resultMap = "resultMap1">
   	select b.*, c.categoryName, p.title publisherTitle, NOW() time
 	from book b left join category c on b.categoryId = c.id 

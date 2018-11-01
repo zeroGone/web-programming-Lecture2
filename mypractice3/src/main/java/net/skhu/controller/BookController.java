@@ -34,9 +34,13 @@ public class BookController {
 	
 	
 	@RequestMapping(value="list", method=RequestMethod.POST)
-	public String list(Model model, @RequestParam("orderIndex") String orderIndex) {
-		if(orderIndex==null) orderIndex = "0";
-		List<Book> books = bookMapper.findAllOrderBy(orderBy[Integer.parseInt(orderIndex)]);
+	public String list(Model model, @RequestParam("orderIndex") String orderIndex, @RequestParam("input") String title) {
+		Book book = new Book();
+		book.setTitle(title+"%");
+		System.out.println(book.getTitle());
+		if(orderIndex==null) orderIndex="0";
+		List<Book> books = bookMapper.findByTitleAndOrderBy(book, orderBy[Integer.parseInt(orderIndex)]);
+//		List<Book> books = bookMapper.findAllOrderBy(orderBy[Integer.parseInt(orderIndex)]);
 		model.addAttribute("books", books);
 		model.addAttribute("orderIndex", orderIndex);
 		return "book/list";
